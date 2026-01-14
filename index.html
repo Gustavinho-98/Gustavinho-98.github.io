@@ -19,13 +19,16 @@ footer{text-align:center;color:#777;padding:20px}
 <p>Escolha um presente e nos ajude a montar nosso lar 💜</p>
 </header>
 <div class="container">
-<div class="item"><span>Jogo de Pratos</span><a href="https://shopee.com.br" target="_blank">Comprar</a></div>
-<div class="item"><span>Conjunto de Copos</span><a href="https://shopee.com.br" target="_blank">Comprar</a></div>
-<div class="item"><span>Jogo de Talheres</span><a href="https://shopee.com.br" target="_blank">Comprar</a></div>
-<div class="item"><span>Jogo de Panelas</span><a href="https://shopee.com.br" target="_blank">Comprar</a></div>
-<div class="item"><span>Liquidificador</span><a href="https://shopee.com.br" target="_blank">Comprar</a></div>
-<div class="item"><span>Sanduicheira</span><a href="https://shopee.com.br" target="_blank">Comprar</a></div>
-<div class="item"><span>Ferro de Passar</span><a href="https://shopee.com.br" target="_blank">Comprar</a></div>
+<script>
+function marcar(btn){btn.innerText='Já comprado';btn.style.background='#00b894';btn.disabled=true;}
+</script>
+<div class="item"><span>Jogo de Pratos</span><button onclick="marcar(this)">Vou comprar</button><a href="https://shopee.com.br" target="_blank">Comprar</a></div>
+<div class="item"><span>Conjunto de Copos</span><button onclick="marcar(this)">Vou comprar</button><a href="https://shopee.com.br" target="_blank">Comprar</a></div>
+<div class="item"><span>Jogo de Talheres</span><button onclick="marcar(this)">Vou comprar</button><a href="https://shopee.com.br" target="_blank">Comprar</a></div>
+<div class="item"><span>Jogo de Panelas</span><button onclick="marcar(this)">Vou comprar</button><a href="https://shopee.com.br" target="_blank">Comprar</a></div>
+<div class="item"><span>Liquidificador</span><button onclick="marcar(this)">Vou comprar</button><a href="https://shopee.com.br" target="_blank">Comprar</a></div>
+<div class="item"><span>Sanduicheira</span><button onclick="marcar(this)">Vou comprar</button><a href="https://shopee.com.br" target="_blank">Comprar</a></div>
+<div class="item"><span>Ferro de Passar</span><button onclick="marcar(this)">Vou comprar</button><a href="https://shopee.com.br" target="_blank">Comprar</a></div>
 </div>
 <footer>
 <p>Com carinho ❤️</p>
