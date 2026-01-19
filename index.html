@@ -55,7 +55,7 @@ async function comprar(linha,btn){
   await fetch(API_URL,{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:`linha=${linha}&nome=${encodeURIComponent(nome)}`});
   location.reload();
 }
-window.onload = ()=>{carregar(); setInterval(carregar,2000);}
+window.onload = ()=>{carregar(); setInterval(carregar,100);}
 </script>
 </body>
 </html>
