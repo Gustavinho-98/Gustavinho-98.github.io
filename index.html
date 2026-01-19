@@ -5,14 +5,148 @@
 <title>Chá de Casa Nova v2</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
-body{font-family:Arial;background:#f4f4f4;margin:0}
-header{background:#6c5ce7;color:white;padding:20px;text-align:center}
-.container{padding:20px;max-width:900px;margin:auto}
-.item{background:white;padding:15px;border-radius:8px;margin-bottom:10px;display:flex;justify-content:space-between;align-items:center}
-.item a{background:#6c5ce7;color:white;padding:8px 12px;border-radius:6px;text-decoration:none}
-.item a:hover{opacity:.8}
-footer{text-align:center;color:#777;padding:20px}
+:root{
+  --primary:#6c5ce7;
+  --bg:#f7f8fc;
+  --card:#ffffff;
+  --text:#2d3436;
+  --muted:#636e72;
+  --success:#00b894;
+  --radius:14px;
+}
+
+*{
+  box-sizing:border-box;
+}
+
+body{
+  font-family: 'Segoe UI', Inter, Arial, sans-serif;
+  background:var(--bg);
+  margin:0;
+  color:var(--text);
+}
+
+header{
+  background:linear-gradient(135deg,#6c5ce7,#7b6cff);
+  color:white;
+  padding:40px 20px;
+  text-align:center;
+  border-bottom-left-radius:30px;
+  border-bottom-right-radius:30px;
+}
+
+header h1{
+  margin:0;
+  font-size:32px;
+  font-weight:700;
+}
+
+header p{
+  margin-top:8px;
+  opacity:.9;
+  font-size:16px;
+}
+
+.container{
+  padding:30px 20px;
+  max-width:850px;
+  margin:auto;
+}
+
+#loading{
+  background:white;
+  border-radius:var(--radius);
+  padding:18px;
+  margin-bottom:20px;
+  box-shadow:0 10px 30px rgba(0,0,0,.05);
+}
+
+.item{
+  background:var(--card);
+  padding:18px 20px;
+  border-radius:var(--radius);
+  margin-bottom:14px;
+  display:flex;
+  align-items:center;
+  gap:15px;
+  box-shadow:0 6px 25px rgba(0,0,0,.05);
+  transition:.25s ease;
+}
+
+.item:hover{
+  transform:translateY(-2px);
+  box-shadow:0 12px 35px rgba(0,0,0,.08);
+}
+
+.item span{
+  flex:1;
+  font-size:16px;
+  font-weight:500;
+}
+
+.item button{
+  background:var(--primary);
+  color:white;
+  border:none;
+  padding:10px 16px;
+  border-radius:10px;
+  cursor:pointer;
+  font-weight:600;
+  transition:.2s;
+}
+
+.item button:hover:not(:disabled){
+  opacity:.9;
+  transform:scale(1.03);
+}
+
+.item button:disabled{
+  cursor:default;
+  opacity:.9;
+}
+
+.item a{
+  text-decoration:none;
+  color:var(--primary);
+  font-weight:600;
+  font-size:14px;
+  border:1px solid var(--primary);
+  padding:9px 14px;
+  border-radius:10px;
+  transition:.2s;
+}
+
+.item a:hover{
+  background:var(--primary);
+  color:white;
+}
+
+footer{
+  text-align:center;
+  color:var(--muted);
+  padding:40px 20px;
+  font-size:14px;
+}
+
+/* 📱 Mobile */
+@media(max-width:600px){
+  .item{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  .item a,
+  .item button{
+    width:100%;
+    text-align:center;
+  }
+
+  header h1{
+    font-size:26px;
+  }
+}
 </style>
+
 </head>
 <body>
 <header>
