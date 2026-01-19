@@ -128,6 +128,46 @@ footer{
   font-size:14px;
 }
 
+  .pix-box{
+  margin-top:40px;
+  background:white;
+  border-radius:16px;
+  padding:30px 20px;
+  text-align:center;
+  box-shadow:0 10px 30px rgba(0,0,0,.06);
+}
+
+.pix-box h2{
+  margin:0;
+  color:#6c5ce7;
+  font-size:24px;
+}
+
+.pix-box p{
+  color:#555;
+  margin:10px 0 25px;
+  font-size:16px;
+}
+
+.pix-box img{
+  width:220px;
+  height:220px;
+  margin-bottom:20px;
+  border-radius:12px;
+  border:6px solid #f4f4f4;
+}
+
+.pix-key{
+  background:#f4f4f4;
+  padding:12px;
+  border-radius:10px;
+  font-size:14px;
+  word-break:break-all;
+  color:#333;
+  font-weight:bold;
+}
+
+
 /* 📱 Mobile */
 @media(max-width:600px){
   .item{
@@ -173,6 +213,22 @@ footer{
 <div class="item"><span>Liquidificador</span><button onclick="marcar(this)">Vou comprar</button><a href="https://shopee.com.br" target="_blank">Comprar</a></div>
 <div class="item"><span>Sanduicheira</span><button onclick="marcar(this)">Vou comprar</button><a href="https://shopee.com.br" target="_blank">Comprar</a></div>
 <div class="item"><span>Ferro de Passar</span><button onclick="marcar(this)">Vou comprar</button><a href="https://shopee.com.br" target="_blank">Comprar</a></div>
+
+<!-- PIX SECTION -->
+<div class="pix-box">
+<h2>Está indeciso? 💜</h2>
+<p>Deixe que a gente decida o presente pra você ✨</p>
+
+
+<img
+src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=e31894ec-22a2-4fab-bcfe-f1e5a514ad7c"
+alt="QR Code Pix">
+
+
+<div class="pix-key">
+e31894ec-22a2-4fab-bcfe-f1e5a514ad7c
+</div>
+</div>
 </div>
 <footer>
 <p>Com carinho ❤️</p>
