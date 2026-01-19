@@ -21,6 +21,17 @@ footer{text-align:center;color:#777;padding:20px}
 </header>
 <div class="container">
 
+  <div id="loading" style="
+  text-align:center;
+  padding:20px;
+  font-size:18px;
+  color:#6c5ce7;
+  font-weight:bold;
+">
+  🔄 Carregando lista de presentes...
+</div>
+
+
 <div class="item"><span>Jogo de Pratos</span><button onclick="marcar(this)">Vou comprar</button><a href="https://shopee.com.br" target="_blank">Comprar</a></div>
 <div class="item"><span>Conjunto de Copos</span><button onclick="marcar(this)">Vou comprar</button><a href="https://shopee.com.br" target="_blank">Comprar</a></div>
 <div class="item"><span>Jogo de Talheres</span><button onclick="marcar(this)">Vou comprar</button><a href="https://shopee.com.br" target="_blank">Comprar</a></div>
@@ -32,30 +43,75 @@ footer{text-align:center;color:#777;padding:20px}
 <footer>
 <p>Com carinho ❤️</p>
 </footer>
-  <script>
+<script>
 const API_URL = 'https://script.google.com/macros/s/AKfycbz_5lK57_Sg9m_4LJHr-BHoTOggAprk6Ai54xLugWzYe0vXFHy7R1kLEabRuIR85ErDhQ/exec';
+
 async function carregar(){
-  const r = await fetch(API_URL);
-  const dados = await r.json();
-  document.querySelectorAll('.item').forEach((div,i)=>{
-    const status = dados[i+1][1];
-    const nome = dados[i+1][2];
-    const btn = div.querySelector('button');
-    if(status==='Comprado'){
-      btn.innerText = 'Comprado por '+nome;
-      btn.style.background='#00b894';
-      btn.disabled = true;
-    }
-    btn.onclick = ()=>comprar(i+2,btn);
+
+  // mostra loading
+  document.getElementById('loading').style.display = 'block';
+
+  // trava botões temporariamente
+  document.querySelectorAll('.item button').forEach(b=>{
+    b.disabled = true;
+    b.innerText = 'Carregando...';
   });
+
+  try{
+    const r = await fetch(API_URL + '?t=' + Date.now());
+    const dados = await r.json();
+
+    document.querySelectorAll('.item').forEach((div,i)=>{
+      const status = dados[i+1][1];
+      const nome = dados[i+1][2];
+      const btn = div.querySelector('button');
+
+      if(status === 'Comprado'){
+        btn.innerText = 'Comprado por ' + nome;
+        btn.style.background = '#00b894';
+        btn.disabled = true;
+      }else{
+        btn.innerText = 'Vou comprar';
+        btn.style.background = '#6c5ce7';
+        btn.disabled = false;
+      }
+
+      btn.onclick = ()=>comprar(i+2, btn);
+    });
+
+  }catch(e){
+    document.getElementById('loading').innerText =
+      '❌ Erro ao carregar dados. Atualize a página.';
+    console.error(e);
+    return;
+  }
+
+  // esconde loading
+  document.getElementById('loading').style.display = 'none';
 }
+
 async function comprar(linha,btn){
   const nome = prompt('Seu nome:');
   if(!nome) return;
-  await fetch(API_URL,{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:`linha=${linha}&nome=${encodeURIComponent(nome)}`});
-  location.reload();
+
+  btn.innerText = 'Salvando...';
+  btn.disabled = true;
+
+  await fetch(API_URL,{
+    method:'POST',
+    headers:{'Content-Type':'application/x-www-form-urlencoded'},
+    body:`linha=${linha}&nome=${encodeURIComponent(nome)}`
+  });
+
+  carregar();
 }
-window.onload = ()=>{carregar(); setInterval(carregar,100);}
+
+// carrega imediatamente ao abrir
+carregar();
+
+// atualiza automaticamente
+setInterval(carregar, 2000);
 </script>
+
 </body>
 </html>
