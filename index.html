@@ -167,6 +167,27 @@ footer{
   font-weight:bold;
 }
 
+  .copy-btn{
+  margin-top:15px;
+  background:#6c5ce7;
+  color:white;
+  border:none;
+  padding:12px 20px;
+  border-radius:12px;
+  font-size:16px;
+  cursor:pointer;
+  transition:.2s;
+}
+
+.copy-btn:hover{
+  opacity:.85;
+}
+
+.copy-btn:active{
+  transform:scale(.97);
+}
+
+
 
 /* 📱 Mobile */
 @media(max-width:600px){
@@ -228,6 +249,11 @@ alt="QR Code Pix">
 <div class="pix-key">
 e31894ec-22a2-4fab-bcfe-f1e5a514ad7c
 </div>
+  
+    <button class="copy-btn" onclick="copiarPix()">
+    📋 Copiar chave Pix
+  </button>
+  
 </div>
 </div>
 <footer>
@@ -308,6 +334,19 @@ carregar();
 
 // atualizações silenciosas
 setInterval(carregar, 2000);
+
+  function copiarPix(){
+  const chave = document.getElementById('pixKey').innerText;
+
+  navigator.clipboard.writeText(chave).then(()=>{
+    const btn = document.querySelector('.copy-btn');
+    btn.innerText = '✅ Chave copiada!';
+    setTimeout(()=>{
+      btn.innerText = '📋 Copiar chave Pix';
+    },2000);
+  });
+}
+
 </script>
 
 
