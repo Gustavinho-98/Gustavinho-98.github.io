@@ -335,18 +335,29 @@ carregar();
 // atualizações silenciosas
 setInterval(carregar, 2000);
 
-  function copiarPix(){
-  const chave = document.getElementById('pixKey').innerText;
+  function copiarPix() {
+  const texto = document.getElementById("pixKey").innerText;
 
-  navigator.clipboard.writeText(chave).then(()=>{
-    const btn = document.querySelector('.copy-btn');
-    btn.innerText = '✅ Chave copiada!';
-    setTimeout(()=>{
-      btn.innerText = '📋 Copiar chave Pix';
-    },2000);
-  });
+  const input = document.createElement("textarea");
+  input.value = texto;
+  document.body.appendChild(input);
+
+  input.select();
+  input.setSelectionRange(0, 99999); // mobile
+
+  document.execCommand("copy");
+
+  document.body.removeChild(input);
+
+  const btn = document.querySelector(".copy-btn");
+  btn.innerText = "✅ Chave copiada!";
+  btn.style.background = "#00b894";
+
+  setTimeout(() => {
+    btn.innerText = "📋 Copiar chave Pix";
+    btn.style.background = "#6c5ce7";
+  }, 2000);
 }
-
 </script>
 
 
