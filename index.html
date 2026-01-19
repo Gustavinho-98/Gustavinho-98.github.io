@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<title>Chá de Casa Nova v2</title>
+<title>Chá de Casa Nova v3</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
 body{font-family:Arial;background:#f4f4f4;margin:0}
@@ -22,36 +22,62 @@ footer{text-align:center;color:#777;padding:20px}
 <div class="container">
 <script>
 const API_URL = 'https://script.google.com/macros/s/AKfycbz_5lK57_Sg9m_4LJHr-BHoTOggAprk6Ai54xLugWzYe0vXFHy7R1kLEabRuIR85ErDhQ/exec';
-async function carregar(){
-  const r = await fetch(API_URL);
-  const dados = await r.json();
-  document.querySelectorAll('.item').forEach((div,i)=>{
-    const status = dados[i+1][1];
-    const nome = dados[i+1][2];
-    const btn = div.querySelector('button');
-    if(status==='Comprado'){
-      btn.innerText = 'Comprado por '+nome;
-      btn.style.background='#00b894';
-      btn.disabled = true;
-    }
-    btn.onclick = ()=>comprar(i+2,btn);
-  });
+
+async function carregar() {
+  try {
+    const r = await fetch(API_URL + '?t=' + Date.now());
+    const dados = await r.json();
+
+    document.querySelectorAll('.item').forEach((div, i) => {
+      const status = dados[i + 1][1];
+      const nome = dados[i + 1][2];
+      const btn = div.querySelector('button');
+
+      if (status === 'Comprado') {
+        btn.innerText = 'Comprado por ' + nome;
+        btn.style.background = '#00b894';
+        btn.disabled = true;
+      } else {
+        btn.innerText = 'Vou comprar';
+        btn.style.background = '#6c5ce7';
+        btn.disabled = false;
+      }
+
+      btn.onclick = () => comprar(i + 2);
+    });
+
+  } catch (e) {
+    console.error('Erro ao carregar dados:', e);
+  }
 }
-async function comprar(linha,btn){
+
+async function comprar(linha) {
   const nome = prompt('Seu nome:');
-  if(!nome) return;
-  await fetch(API_URL,{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:`linha=${linha}&nome=${encodeURIComponent(nome)}`});
-  location.reload();
+  if (!nome) return;
+
+  await fetch(API_URL, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: `linha=${linha}&nome=${encodeURIComponent(nome)}`
+  });
+
+  carregar();
 }
-window.onload = ()=>{carregar(); setInterval(carregar,2000);}
+
+/* 🔥 CARREGA IMEDIATAMENTE AO ABRIR A PÁGINA */
+document.addEventListener('DOMContentLoaded', () => {
+  carregar();
+  setInterval(carregar, 2000);
+});
 </script>
-<div class="item"><span>Jogo de Pratos</span><button onclick="marcar(this)">Vou comprar</button><a href="https://shopee.com.br" target="_blank">Comprar</a></div>
-<div class="item"><span>Conjunto de Copos</span><button onclick="marcar(this)">Vou comprar</button><a href="https://shopee.com.br" target="_blank">Comprar</a></div>
-<div class="item"><span>Jogo de Talheres</span><button onclick="marcar(this)">Vou comprar</button><a href="https://shopee.com.br" target="_blank">Comprar</a></div>
-<div class="item"><span>Jogo de Panelas</span><button onclick="marcar(this)">Vou comprar</button><a href="https://shopee.com.br" target="_blank">Comprar</a></div>
-<div class="item"><span>Liquidificador</span><button onclick="marcar(this)">Vou comprar</button><a href="https://shopee.com.br" target="_blank">Comprar</a></div>
-<div class="item"><span>Sanduicheira</span><button onclick="marcar(this)">Vou comprar</button><a href="https://shopee.com.br" target="_blank">Comprar</a></div>
-<div class="item"><span>Ferro de Passar</span><button onclick="marcar(this)">Vou comprar</button><a href="https://shopee.com.br" target="_blank">Comprar</a></div>
+
+<div class="item"><span>Jogo de Pratos</span><button>Vou comprar</button><a href="https://shopee.com.br" target="_blank">Comprar</a></div>
+<div class="item"><span>Conjunto de Copos</span><button>Vou comprar</button><a href="https://shopee.com.br" target="_blank">Comprar</a></div>
+<div class="item"><span>Jogo de Talheres</span><button>Vou comprar</button><a href="https://shopee.com.br" target="_blank">Comprar</a></div>
+<div class="item"><span>Jogo de Panelas</span><button>Vou comprar</button><a href="https://shopee.com.br" target="_blank">Comprar</a></div>
+<div class="item"><span>Liquidificador</span><button>Vou comprar</button><a href="https://shopee.com.br" target="_blank">Comprar</a></div>
+<div class="item"><span>Sanduicheira</span><button>Vou comprar</button><a href="https://shopee.com.br" target="_blank">Comprar</a></div>
+<div class="item"><span>Ferro de Passar</span><button>Vou comprar</button><a href="https://shopee.com.br" target="_blank">Comprar</a></div>
 </div>
 <footer>
 <p>Com carinho ❤️</p>
