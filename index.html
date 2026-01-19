@@ -46,16 +46,19 @@ footer{text-align:center;color:#777;padding:20px}
 <script>
 const API_URL = 'https://script.google.com/macros/s/AKfycbz_5lK57_Sg9m_4LJHr-BHoTOggAprk6Ai54xLugWzYe0vXFHy7R1kLEabRuIR85ErDhQ/exec';
 
+let primeiraCarga = true;
+
 async function carregar(){
 
-  // mostra loading
-  document.getElementById('loading').style.display = 'block';
+  // loading APENAS ao entrar no site
+  if(primeiraCarga){
+    document.getElementById('loading').style.display = 'block';
 
-  // trava botões temporariamente
-  document.querySelectorAll('.item button').forEach(b=>{
-    b.disabled = true;
-    b.innerText = 'Carregando...';
-  });
+    document.querySelectorAll('.item button').forEach(b=>{
+      b.disabled = true;
+      b.innerText = 'Carregando...';
+    });
+  }
 
   try{
     const r = await fetch(API_URL + '?t=' + Date.now());
@@ -80,14 +83,18 @@ async function carregar(){
     });
 
   }catch(e){
-    document.getElementById('loading').innerText =
-      '❌ Erro ao carregar dados. Atualize a página.';
+    if(primeiraCarga){
+      document.getElementById('loading').innerText =
+        '❌ Erro ao carregar dados. Atualize a página.';
+    }
     console.error(e);
-    return;
   }
 
-  // esconde loading
-  document.getElementById('loading').style.display = 'none';
+  // some com loading depois da primeira resposta
+  if(primeiraCarga){
+    document.getElementById('loading').style.display = 'none';
+    primeiraCarga = false;
+  }
 }
 
 async function comprar(linha,btn){
@@ -106,12 +113,13 @@ async function comprar(linha,btn){
   carregar();
 }
 
-// carrega imediatamente ao abrir
+// primeira carga imediata
 carregar();
 
-// atualiza automaticamente
+// atualizações silenciosas
 setInterval(carregar, 2000);
 </script>
+
 
 </body>
 </html>
