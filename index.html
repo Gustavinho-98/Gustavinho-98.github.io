@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<title>Chá de Casa Nova</title>
+<title>Chá de Casa Nova v2</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
@@ -19,7 +19,7 @@
 *{ box-sizing:border-box; }
 
 body{
-  font-family:'Segoe UI',Arial;
+  font-family:'Segoe UI', Inter, Arial, sans-serif;
   background:var(--bg);
   margin:0;
   color:var(--text);
@@ -27,10 +27,11 @@ body{
 
 header{
   background:linear-gradient(135deg,#6c5ce7,#7b6cff);
-  color:#fff;
+  color:white;
   padding:40px 20px;
   text-align:center;
-  border-radius:0 0 30px 30px;
+  border-bottom-left-radius:30px;
+  border-bottom-right-radius:30px;
 }
 
 .container{
@@ -40,13 +41,13 @@ header{
 }
 
 .item{
-  background:#fff;
-  padding:18px;
+  background:white;
+  padding:18px 20px;
   border-radius:14px;
-  margin-bottom:15px;
+  margin-bottom:14px;
   display:flex;
-  gap:15px;
   align-items:center;
+  gap:15px;
   box-shadow:0 6px 25px rgba(0,0,0,.05);
 }
 
@@ -65,51 +66,35 @@ header{
   font-weight:600;
 }
 
-.item button:disabled{
-  background:#00b894;
-}
-
 .item a{
   text-decoration:none;
   color:#6c5ce7;
   border:1px solid #6c5ce7;
   padding:9px 14px;
   border-radius:10px;
-  font-weight:600;
 }
 
-#loading{
-  background:white;
+.produto-img{
+  width:140px;
+  height:140px;
+  object-fit:cover;
+  border-radius:14px;
+}
+
+.aviso{
+  background:#fff7e6;
+  border-left:6px solid #f1c40f;
   padding:18px;
   border-radius:14px;
-  margin-bottom:20px;
-  text-align:center;
-  color:#6c5ce7;
-  font-weight:bold;
+  margin-bottom:25px;
 }
 
-/* PIX */
 .pix-box{
   margin-top:40px;
-  background:#fff;
-  padding:30px 20px;
+  background:white;
+  padding:30px;
   border-radius:16px;
   text-align:center;
-  box-shadow:0 10px 30px rgba(0,0,0,.06);
-}
-
-.pix-box img{
-  width:220px;
-  height:220px;
-  margin:20px 0;
-}
-
-.pix-key{
-  background:#f4f4f4;
-  padding:12px;
-  border-radius:10px;
-  font-weight:bold;
-  word-break:break-all;
 }
 
 .copy-btn{
@@ -133,59 +118,49 @@ header{
 
 <div class="container">
 
-<div id="loading">🔄 Carregando lista de presentes...</div>
-
-<!-- ITENS -->
-<div class="item" data-item="Escova de Limpeza Vaso Sanitário">
-  <span>Escova de Limpeza Vaso Sanitário<br><small>R$ 12,95</small></span>
-  <button>Vou comprar</button>
-  <a href="https://s.shopee.com.br/6VH2gkMlpf" target="_blank">Comprar</a>
+<div class="aviso">
+⚠️ Antes de comprar, clique em <b>“Vou comprar”</b> para reservar o item.<br>
+Isso evita compras duplicadas.<br>
+<b>Marque apenas se tiver certeza 💜</b>
 </div>
 
-<div class="item" data-item="Conjunto de Copos">
-  <span>Conjunto de Copos</span>
-  <button>Vou comprar</button>
-  <a href="#">Comprar</a>
+<div id="loading" style="text-align:center;font-weight:bold;color:#6c5ce7">
+🔄 Carregando lista de presentes...
 </div>
 
-<div class="item" data-item="Jogo de Talheres">
-  <span>Jogo de Talheres</span>
+<!-- ITEM 1 -->
+<div class="item">
+  <img class="produto-img"
+    src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-mbpct1u2edspd4.webp">
+
+  <span>
+    Escova de Limpeza Vaso Sanitário<br>
+    <small>R$ 12,95</small>
+  </span>
+
   <button>Vou comprar</button>
-  <a href="#">Comprar</a>
+
+  <a href="https://s.shopee.com.br/6VH2gkMlpf" target="_blank">
+    Comprar
+  </a>
 </div>
 
-<div class="item" data-item="Jogo de Panelas">
-  <span>Jogo de Panelas</span>
-  <button>Vou comprar</button>
-  <a href="#">Comprar</a>
-</div>
-
-<div class="item" data-item="Liquidificador">
-  <span>Liquidificador</span>
-  <button>Vou comprar</button>
-  <a href="#">Comprar</a>
-</div>
-
-<div class="item" data-item="Sanduicheira">
-  <span>Sanduicheira</span>
-  <button>Vou comprar</button>
-  <a href="#">Comprar</a>
-</div>
-
-<div class="item" data-item="Ferro de Passar">
-  <span>Ferro de Passar</span>
-  <button>Vou comprar</button>
-  <a href="#">Comprar</a>
-</div>
+<div class="item"><span>Conjunto de Copos</span><button>Vou comprar</button><a href="#">Comprar</a></div>
+<div class="item"><span>Jogo de Talheres</span><button>Vou comprar</button><a href="#">Comprar</a></div>
+<div class="item"><span>Jogo de Panelas</span><button>Vou comprar</button><a href="#">Comprar</a></div>
+<div class="item"><span>Liquidificador</span><button>Vou comprar</button><a href="#">Comprar</a></div>
+<div class="item"><span>Sanduicheira</span><button>Vou comprar</button><a href="#">Comprar</a></div>
+<div class="item"><span>Ferro de Passar</span><button>Vou comprar</button><a href="#">Comprar</a></div>
 
 <!-- PIX -->
 <div class="pix-box">
   <h2>Está indeciso? 💜</h2>
   <p>Deixe que a gente decida o presente ✨</p>
 
-  <img src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=e31894ec-22a2-4fab-bcfe-f1e5a514ad7c">
+  <img
+    src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=e31894ec-22a2-4fab-bcfe-f1e5a514ad7c">
 
-  <div class="pix-key" id="pixKey">
+  <div id="pixKey" style="margin-top:15px;font-weight:bold">
     e31894ec-22a2-4fab-bcfe-f1e5a514ad7c
   </div>
 
@@ -195,15 +170,17 @@ header{
 </div>
 
 <script>
-const API_URL =
-'https://script.google.com/macros/s/AKfycbz_5lK57_Sg9m_4LJHr-BHoTOggAprk6Ai54xLugWzYe0vXFHy7R1kLEabRuIR85ErDhQ/exec';
+const API_URL = 'https://script.google.com/macros/s/AKfycbz_5lK57_Sg9m_4LJHr-BHoTOggAprk6Ai54xLugWzYe0vXFHy7R1kLEabRuIR85ErDhQ/exec';
 
 let primeiraCarga = true;
 
 async function carregar(){
 
   if(primeiraCarga){
-    document.getElementById('loading').style.display = 'block';
+    document.querySelectorAll('.item button').forEach(b=>{
+      b.disabled = true;
+      b.innerText = 'Carregando...';
+    });
   }
 
   try{
@@ -211,38 +188,40 @@ async function carregar(){
     const dados = await r.json();
 
     document.querySelectorAll('.item').forEach((div,i)=>{
-      const btn = div.querySelector('button');
       const status = dados[i+1][1];
+      const btn = div.querySelector('button');
 
       if(status === 'Comprado'){
         btn.innerText = 'COMPRADO';
+        btn.style.background = '#00b894';
         btn.disabled = true;
       }else{
         btn.innerText = 'Vou comprar';
+        btn.style.background = '#6c5ce7';
         btn.disabled = false;
       }
 
-      btn.onclick = () => comprar(i+2, btn);
+      btn.onclick = ()=>comprar(i+2, btn);
     });
 
   }catch(e){
-    document.getElementById('loading').innerText =
-      '❌ Erro ao carregar dados';
+    console.error(e);
   }
 
-  if(primeiraCarga){
-    document.getElementById('loading').style.display = 'none';
-    primeiraCarga = false;
-  }
+  document.getElementById('loading').style.display = 'none';
+  primeiraCarga = false;
 }
 
-async function comprar(linha, btn){
+async function comprar(linha, btn, item){
 
-  const item =
-    btn.closest('.item').dataset.item;
+  // ✅ CORREÇÃO DEFINITIVA DO UNDEFINED
+  if(!item){
+    const span = btn.closest('.item').querySelector('span');
+    item = span.childNodes[0].textContent.trim();
+  }
 
   const nome = prompt(
-    `Dê uma dica de quem está comprando e confirme:\n\n"${item}"`
+    `Dê uma dica de quem está comprando e confirme que irá comprar:\n\n"${item}"`
   );
 
   if(!nome) return;
@@ -260,13 +239,15 @@ async function comprar(linha, btn){
 }
 
 function copiarPix(){
-  const chave = document.getElementById('pixKey').innerText;
-  navigator.clipboard.writeText(chave);
-  alert('Chave Pix copiada!');
+  navigator.clipboard.writeText(
+    document.getElementById('pixKey').innerText
+  ).then(()=>{
+    alert('Chave Pix copiada!');
+  });
 }
 
 carregar();
-setInterval(carregar, 2000);
+setInterval(carregar,2000);
 </script>
 
 </body>
