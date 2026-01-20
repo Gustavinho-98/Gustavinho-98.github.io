@@ -106,6 +106,43 @@ header{
   border-radius:12px;
   cursor:pointer;
 }
+
+  /* ===============================
+   AJUSTE MOBILE
+================================ */
+@media (max-width: 700px){
+
+  .item{
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .produto-img{
+    width: 100%;
+    max-width: 260px;
+    height: auto;
+  }
+
+  .item span{
+    width: 100%;
+    margin-top: 10px;
+    font-size: 16px;
+  }
+
+  .item button,
+  .item a{
+    width: 100%;
+    max-width: 260px;
+    margin-top: 8px;
+    text-align: center;
+  }
+
+  .item a{
+    display: block;
+  }
+}
+
 </style>
 </head>
 
