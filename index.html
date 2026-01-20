@@ -202,6 +202,30 @@ footer{
   font-size:14px;
 }
 
+  .aviso{
+  background:#fff7e6;
+  border-left:6px solid #f1c40f;
+  padding:18px 20px;
+  border-radius:14px;
+  margin-bottom:25px;
+  color:#7a5b00;
+  font-size:15px;
+  line-height:1.5;
+  box-shadow:0 6px 20px rgba(0,0,0,.05);
+}
+
+.aviso strong{
+  color:#d35400;
+}
+
+.aviso span{
+  display:block;
+  margin-top:6px;
+  font-weight:600;
+  color:#6c5ce7;
+}
+
+
 
 
 
@@ -232,6 +256,14 @@ footer{
 </header>
 <div class="container">
 
+  <div class="aviso">
+  ⚠️ <strong>Antes de comprar</strong>, clique em
+  <strong>“Vou comprar”</strong> para reservar o item.<br>
+  Isso evita que duas pessoas comprem o mesmo presente.<br>
+  <span>Marque apenas se tiver certeza 💜</span>
+</div>
+
+
   <div id="loading" style="
   text-align:center;
   padding:20px;
@@ -259,12 +291,12 @@ footer{
   </a>
 </div>
 
-<div class="item"><span>Conjunto de Copos</span><button onclick="marcar(this)">Vou comprar</button><a href="https://shopee.com.br" target="_blank">Comprar</a></div>
-<div class="item"><span>Jogo de Talheres</span><button onclick="marcar(this)">Vou comprar</button><a href="https://shopee.com.br" target="_blank">Comprar</a></div>
-<div class="item"><span>Jogo de Panelas</span><button onclick="marcar(this)">Vou comprar</button><a href="https://shopee.com.br" target="_blank">Comprar</a></div>
-<div class="item"><span>Liquidificador</span><button onclick="marcar(this)">Vou comprar</button><a href="https://shopee.com.br" target="_blank">Comprar</a></div>
-<div class="item"><span>Sanduicheira</span><button onclick="marcar(this)">Vou comprar</button><a href="https://shopee.com.br" target="_blank">Comprar</a></div>
-<div class="item"><span>Ferro de Passar</span><button onclick="marcar(this)">Vou comprar</button><a href="https://shopee.com.br" target="_blank">Comprar</a></div>
+<div class="item"><span>Conjunto de Copos</span><button onclick="comprarItem(this)">Vou comprar</button><a href="https://shopee.com.br" target="_blank">Comprar</a></div>
+<div class="item"><span>Jogo de Talheres</span><button onclick="comprarItem(this)">Vou comprar</button><a href="https://shopee.com.br" target="_blank">Comprar</a></div>
+<div class="item"><span>Jogo de Panelas</span><button onclick="comprarItem(this)">Vou comprar</button><a href="https://shopee.com.br" target="_blank">Comprar</a></div>
+<div class="item"><span>Liquidificador</span><button onclick="comprarItem(this)">Vou comprar</button><a href="https://shopee.com.br" target="_blank">Comprar</a></div>
+<div class="item"><span>Sanduicheira</span><button onclick="comprarItem(this)">Vou comprar</button><a href="https://shopee.com.br" target="_blank">Comprar</a></div>
+<div class="item"><span>Ferro de Passar</span><button onclick="comprarItem(this)">Vou comprar</button><a href="https://shopee.com.br" target="_blank">Comprar</a></div>
 
 <!-- PIX SECTION -->
 <div class="pix-box">
@@ -344,8 +376,19 @@ async function carregar(){
   }
 }
 
-async function comprar(linha,btn){
-  const nome = prompt('Seu nome:');
+  function comprarItem(botao){
+  const item = botao.closest('.item').querySelector('span').innerText;
+  const linha = [...document.querySelectorAll('.item')].indexOf(botao.closest('.item')) + 2;
+
+  comprar(linha, botao, item);
+}
+
+
+async function comprar(linha, btn, item){
+  const nome = prompt(
+    `Dê uma dica de quem está comprando e confirme que irá comprar:\n\n"${item}"`
+  );
+
   if(!nome) return;
 
   btn.innerText = 'Salvando...';
@@ -359,6 +402,7 @@ async function comprar(linha,btn){
 
   carregar();
 }
+
 
 // primeira carga imediata
 carregar();
