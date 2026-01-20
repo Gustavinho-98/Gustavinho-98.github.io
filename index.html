@@ -2,8 +2,9 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<title>Chá de Casa Nova v2</title>
+<title>Chá de Casa Nova</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
 <style>
 :root{
   --primary:#6c5ce7;
@@ -15,12 +16,10 @@
   --radius:14px;
 }
 
-*{
-  box-sizing:border-box;
-}
+*{ box-sizing:border-box; }
 
 body{
-  font-family: 'Segoe UI', Inter, Arial, sans-serif;
+  font-family:'Segoe UI',Arial;
   background:var(--bg);
   margin:0;
   color:var(--text);
@@ -28,23 +27,10 @@ body{
 
 header{
   background:linear-gradient(135deg,#6c5ce7,#7b6cff);
-  color:white;
+  color:#fff;
   padding:40px 20px;
   text-align:center;
-  border-bottom-left-radius:30px;
-  border-bottom-right-radius:30px;
-}
-
-header h1{
-  margin:0;
-  font-size:32px;
-  font-weight:700;
-}
-
-header p{
-  margin-top:8px;
-  opacity:.9;
-  font-size:16px;
+  border-radius:0 0 30px 30px;
 }
 
 .container{
@@ -53,290 +39,171 @@ header p{
   margin:auto;
 }
 
-#loading{
-  background:white;
-  border-radius:var(--radius);
-  padding:18px;
-  margin-bottom:20px;
-  box-shadow:0 10px 30px rgba(0,0,0,.05);
-}
-
 .item{
-  background:var(--card);
-  padding:18px 20px;
-  border-radius:var(--radius);
-  margin-bottom:14px;
+  background:#fff;
+  padding:18px;
+  border-radius:14px;
+  margin-bottom:15px;
   display:flex;
-  align-items:center;
   gap:15px;
+  align-items:center;
   box-shadow:0 6px 25px rgba(0,0,0,.05);
-  transition:.25s ease;
-}
-
-.item:hover{
-  transform:translateY(-2px);
-  box-shadow:0 12px 35px rgba(0,0,0,.08);
 }
 
 .item span{
   flex:1;
   font-size:16px;
-  font-weight:500;
 }
 
 .item button{
-  background:var(--primary);
+  background:#6c5ce7;
   color:white;
   border:none;
   padding:10px 16px;
   border-radius:10px;
   cursor:pointer;
   font-weight:600;
-  transition:.2s;
-}
-
-.item button:hover:not(:disabled){
-  opacity:.9;
-  transform:scale(1.03);
 }
 
 .item button:disabled{
-  cursor:default;
-  opacity:.9;
+  background:#00b894;
 }
 
 .item a{
   text-decoration:none;
-  color:var(--primary);
-  font-weight:600;
-  font-size:14px;
-  border:1px solid var(--primary);
+  color:#6c5ce7;
+  border:1px solid #6c5ce7;
   padding:9px 14px;
   border-radius:10px;
-  transition:.2s;
+  font-weight:600;
 }
 
-.item a:hover{
-  background:var(--primary);
-  color:white;
-}
-
-footer{
-  text-align:center;
-  color:var(--muted);
-  padding:40px 20px;
-  font-size:14px;
-}
-
-  .pix-box{
-  margin-top:40px;
+#loading{
   background:white;
-  border-radius:16px;
+  padding:18px;
+  border-radius:14px;
+  margin-bottom:20px;
+  text-align:center;
+  color:#6c5ce7;
+  font-weight:bold;
+}
+
+/* PIX */
+.pix-box{
+  margin-top:40px;
+  background:#fff;
   padding:30px 20px;
+  border-radius:16px;
   text-align:center;
   box-shadow:0 10px 30px rgba(0,0,0,.06);
-}
-
-.pix-box h2{
-  margin:0;
-  color:#6c5ce7;
-  font-size:24px;
-}
-
-.pix-box p{
-  color:#555;
-  margin:10px 0 25px;
-  font-size:16px;
 }
 
 .pix-box img{
   width:220px;
   height:220px;
-  margin-bottom:20px;
-  border-radius:12px;
-  border:6px solid #f4f4f4;
+  margin:20px 0;
 }
 
 .pix-key{
   background:#f4f4f4;
   padding:12px;
   border-radius:10px;
-  font-size:14px;
-  word-break:break-all;
-  color:#333;
   font-weight:bold;
+  word-break:break-all;
 }
 
-  .copy-btn{
+.copy-btn{
   margin-top:15px;
   background:#6c5ce7;
   color:white;
   border:none;
   padding:12px 20px;
   border-radius:12px;
-  font-size:16px;
   cursor:pointer;
-  transition:.2s;
-}
-
-.copy-btn:hover{
-  opacity:.85;
-}
-
-.copy-btn:active{
-  transform:scale(.97);
-}
-
-  .produto-img{
-  width:140px;
-  height:140px;
-  object-fit:cover;
-  border-radius:14px;
-  border:1px solid #eee;
-}
-
-
-.item span small{
-  color:#00b894;
-  font-weight:600;
-  font-size:14px;
-}
-
-  .aviso{
-  background:#fff7e6;
-  border-left:6px solid #f1c40f;
-  padding:18px 20px;
-  border-radius:14px;
-  margin-bottom:25px;
-  color:#7a5b00;
-  font-size:15px;
-  line-height:1.5;
-  box-shadow:0 6px 20px rgba(0,0,0,.05);
-}
-
-.aviso strong{
-  color:#d35400;
-}
-
-.aviso span{
-  display:block;
-  margin-top:6px;
-  font-weight:600;
-  color:#6c5ce7;
-}
-
-
-
-
-
-/* 📱 Mobile */
-@media(max-width:600px){
-  .item{
-    flex-direction:column;
-    align-items:flex-start;
-  }
-
-  .item a,
-  .item button{
-    width:100%;
-    text-align:center;
-  }
-
-  header h1{
-    font-size:26px;
-  }
 }
 </style>
-
 </head>
+
 <body>
+
 <header>
-<h1>Chá de Casa Nova</h1>
-<p>Escolha um presente e nos ajude a montar nosso lar 💜</p>
+  <h1>Chá de Casa Nova</h1>
+  <p>Escolha um presente e nos ajude a montar nosso lar 💜</p>
 </header>
+
 <div class="container">
 
-  <div class="aviso">
-  ⚠️ <strong>Antes de comprar</strong>, clique em
-  <strong>“Vou comprar”</strong> para reservar o item.<br>
-  Isso evita que duas pessoas comprem o mesmo presente.<br>
-  <span>Marque apenas se tiver certeza 💜</span>
-</div>
+<div id="loading">🔄 Carregando lista de presentes...</div>
 
-
-  <div id="loading" style="
-  text-align:center;
-  padding:20px;
-  font-size:18px;
-  color:#6c5ce7;
-  font-weight:bold;
-">
-  🔄 Carregando lista de presentes...
-</div>
-
-
-<div class="item">
-  <img class="produto-img"
-       src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-mbpct1u2edspd4.webp">
-
-  <span>
-    Escova de Limpeza Vaso Sanitário<br>
-    <small>R$ 12,95</small>
-  </span>
-
+<!-- ITENS -->
+<div class="item" data-item="Escova de Limpeza Vaso Sanitário">
+  <span>Escova de Limpeza Vaso Sanitário<br><small>R$ 12,95</small></span>
   <button>Vou comprar</button>
-
-  <a href="https://s.shopee.com.br/6VH2gkMlpf" target="_blank">
-    Comprar
-  </a>
+  <a href="https://s.shopee.com.br/6VH2gkMlpf" target="_blank">Comprar</a>
 </div>
 
-<div class="item"><span>Conjunto de Copos</span><button onclick="comprarItem(this)">Vou comprar</button><a href="https://shopee.com.br" target="_blank">Comprar</a></div>
-<div class="item"><span>Jogo de Talheres</span><button onclick="comprarItem(this)">Vou comprar</button><a href="https://shopee.com.br" target="_blank">Comprar</a></div>
-<div class="item"><span>Jogo de Panelas</span><button onclick="comprarItem(this)">Vou comprar</button><a href="https://shopee.com.br" target="_blank">Comprar</a></div>
-<div class="item"><span>Liquidificador</span><button onclick="comprarItem(this)">Vou comprar</button><a href="https://shopee.com.br" target="_blank">Comprar</a></div>
-<div class="item"><span>Sanduicheira</span><button onclick="comprarItem(this)">Vou comprar</button><a href="https://shopee.com.br" target="_blank">Comprar</a></div>
-<div class="item"><span>Ferro de Passar</span><button onclick="comprarItem(this)">Vou comprar</button><a href="https://shopee.com.br" target="_blank">Comprar</a></div>
+<div class="item" data-item="Conjunto de Copos">
+  <span>Conjunto de Copos</span>
+  <button>Vou comprar</button>
+  <a href="#">Comprar</a>
+</div>
 
-<!-- PIX SECTION -->
+<div class="item" data-item="Jogo de Talheres">
+  <span>Jogo de Talheres</span>
+  <button>Vou comprar</button>
+  <a href="#">Comprar</a>
+</div>
+
+<div class="item" data-item="Jogo de Panelas">
+  <span>Jogo de Panelas</span>
+  <button>Vou comprar</button>
+  <a href="#">Comprar</a>
+</div>
+
+<div class="item" data-item="Liquidificador">
+  <span>Liquidificador</span>
+  <button>Vou comprar</button>
+  <a href="#">Comprar</a>
+</div>
+
+<div class="item" data-item="Sanduicheira">
+  <span>Sanduicheira</span>
+  <button>Vou comprar</button>
+  <a href="#">Comprar</a>
+</div>
+
+<div class="item" data-item="Ferro de Passar">
+  <span>Ferro de Passar</span>
+  <button>Vou comprar</button>
+  <a href="#">Comprar</a>
+</div>
+
+<!-- PIX -->
 <div class="pix-box">
-<h2>Está indeciso? 💜</h2>
-<p>Deixe que a gente decida o presente pra você ✨</p>
+  <h2>Está indeciso? 💜</h2>
+  <p>Deixe que a gente decida o presente ✨</p>
 
+  <img src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=e31894ec-22a2-4fab-bcfe-f1e5a514ad7c">
 
-<img
-src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=e31894ec-22a2-4fab-bcfe-f1e5a514ad7c"
-alt="QR Code Pix">
+  <div class="pix-key" id="pixKey">
+    e31894ec-22a2-4fab-bcfe-f1e5a514ad7c
+  </div>
 
-
-<div class="pix-key" id="pixKey">
-e31894ec-22a2-4fab-bcfe-f1e5a514ad7c
+  <button class="copy-btn" onclick="copiarPix()">📋 Copiar chave Pix</button>
 </div>
-  
-    <button class="copy-btn" onclick="copiarPix()">
-    📋 Copiar chave Pix
-  </button>
-  
+
 </div>
-</div>
-<footer>
-<p>Com carinho ❤️</p>
-</footer>
+
 <script>
-const API_URL = 'https://script.google.com/macros/s/AKfycbz_5lK57_Sg9m_4LJHr-BHoTOggAprk6Ai54xLugWzYe0vXFHy7R1kLEabRuIR85ErDhQ/exec';
+const API_URL =
+'https://script.google.com/macros/s/AKfycbz_5lK57_Sg9m_4LJHr-BHoTOggAprk6Ai54xLugWzYe0vXFHy7R1kLEabRuIR85ErDhQ/exec';
 
 let primeiraCarga = true;
 
 async function carregar(){
 
-  // loading APENAS ao entrar no site
   if(primeiraCarga){
     document.getElementById('loading').style.display = 'block';
-
-    document.querySelectorAll('.item button').forEach(b=>{
-      b.disabled = true;
-      b.innerText = 'Carregando...';
-    });
   }
 
   try{
@@ -344,55 +211,38 @@ async function carregar(){
     const dados = await r.json();
 
     document.querySelectorAll('.item').forEach((div,i)=>{
-      const status = dados[i+1][1];
-      const nome = dados[i+1][2];
       const btn = div.querySelector('button');
+      const status = dados[i+1][1];
 
       if(status === 'Comprado'){
         btn.innerText = 'COMPRADO';
-        btn.style.background = '#00b894';
         btn.disabled = true;
       }else{
         btn.innerText = 'Vou comprar';
-        btn.style.background = '#6c5ce7';
         btn.disabled = false;
       }
 
-      btn.onclick = ()=>comprar(i+2, btn);
+      btn.onclick = () => comprar(i+2, btn);
     });
 
   }catch(e){
-    if(primeiraCarga){
-      document.getElementById('loading').innerText =
-        '❌ Erro ao carregar dados. Atualize a página.';
-    }
-    console.error(e);
+    document.getElementById('loading').innerText =
+      '❌ Erro ao carregar dados';
   }
 
-  // some com loading depois da primeira resposta
   if(primeiraCarga){
     document.getElementById('loading').style.display = 'none';
     primeiraCarga = false;
   }
 }
 
-function comprarItem(botao){
-  const itemDiv = botao.closest('.item');
-  const span = itemDiv.querySelector('span');
+async function comprar(linha, btn){
 
-  const item = span.childNodes[0].textContent.trim();
+  const item =
+    btn.closest('.item').dataset.item;
 
-  const linha =
-    [...document.querySelectorAll('.item')].indexOf(itemDiv) + 2;
-
-  comprar(linha, botao, item);
-}
-
-
-
-async function comprar(linha, btn, item){
   const nome = prompt(
-    `Dê uma dica de quem está comprando e confirme que irá comprar:\n\n"${item}"`
+    `Dê uma dica de quem está comprando e confirme:\n\n"${item}"`
   );
 
   if(!nome) return;
@@ -409,27 +259,15 @@ async function comprar(linha, btn, item){
   carregar();
 }
 
-
-// primeira carga imediata
-carregar();
-
-// atualizações silenciosas
-setInterval(carregar, 2000);
-
- function copiarPix(){
+function copiarPix(){
   const chave = document.getElementById('pixKey').innerText;
-
-  navigator.clipboard.writeText(chave).then(()=>{
-    const btn = document.querySelector('.copy-btn');
-    btn.innerText = '✅ Chave copiada!';
-    setTimeout(()=>{
-      btn.innerText = '📋 Copiar chave Pix';
-    },2000);
-  });
+  navigator.clipboard.writeText(chave);
+  alert('Chave Pix copiada!');
 }
 
+carregar();
+setInterval(carregar, 2000);
 </script>
-
 
 </body>
 </html>
