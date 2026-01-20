@@ -376,12 +376,18 @@ async function carregar(){
   }
 }
 
-  function comprarItem(botao){
-  const item = botao.closest('.item').querySelector('span').innerText;
-  const linha = [...document.querySelectorAll('.item')].indexOf(botao.closest('.item')) + 2;
+function comprarItem(botao){
+  const itemDiv = botao.closest('.item');
+  const span = itemDiv.querySelector('span');
+
+  const item = span.childNodes[0].textContent.trim();
+
+  const linha =
+    [...document.querySelectorAll('.item')].indexOf(itemDiv) + 2;
 
   comprar(linha, botao, item);
 }
+
 
 
 async function comprar(linha, btn, item){
